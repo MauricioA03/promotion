@@ -36,12 +36,12 @@ public abstract class GenericServiceImpl<T extends ModelBase> implements Generic
 
     @Override
     public List<T> findAll() {
-        return new ArrayList<>(getRepository().findAll());
+        return new ArrayList<>(getPromotionRepository().findAll());
     }
 
     @Override
     public T findById(Long id) {
-        final Optional<T> optional = getRepository().findById(id);
+        final Optional<T> optional = getPromotionRepository().findById(id);
         if (!optional.isPresent()) {
             String typeName = (((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0])
                     .getTypeName();
@@ -55,14 +55,14 @@ public abstract class GenericServiceImpl<T extends ModelBase> implements Generic
     @Override
     public T save(T model) {
         validateSave(model);
-        T t = getRepository().save(model);
+        T t = getPromotionRepository().save(model);
         return findById(t.getId());
     }
 
     @Override
     public T saveAndFlush(T model) {
         validateSave(model);
-        T t = getRepository().saveAndFlush(model);
+        T t = getPromotionRepository().saveAndFlush(model);
         return findById(t.getId());
     }
 
@@ -87,17 +87,17 @@ public abstract class GenericServiceImpl<T extends ModelBase> implements Generic
 
     @Override
     public void deleteById(Long id) {
-        getRepository().deleteById(id);
+        getPromotionRepository().deleteById(id);
     }
 
     @Override
     public Page<T> findAll(Pageable pageable) {
-        return getRepository().findAll(pageable);
+        return getPromotionRepository().findAll(pageable);
     }
 
     @Override
     public List<T> findAll(String filter) {
-        return getRepository().findAll(getQueryFrom(filter));
+        return getPromotionRepository().findAll(getQueryFrom(filter));
     }
 
 
@@ -148,13 +148,13 @@ public abstract class GenericServiceImpl<T extends ModelBase> implements Generic
         try {
             Byte[] bytes = ImageUtils.inputStreamToByteArray(file);
             setImage(model, bytes);
-            getRepository().save(model);
+            getPromotionRepository().save(model);
         } catch (IOException e) {
             logger.error("Error reading file", e);
         }
     }
 
-    protected abstract GenericRepository<T> getRepository();
+    protected abstract GenericRepository<T> getPromotionRepository();
 
     // set the bytes in the appropriate property in the model object
     protected void setImage(T model, Byte[] bytes) {

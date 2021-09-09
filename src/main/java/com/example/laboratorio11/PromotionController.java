@@ -1,4 +1,4 @@
-package com.example.laboratorio11.util;
+package com.example.laboratorio11;
 
 
 import com.example.laboratorio11.dto.PromotionDto;

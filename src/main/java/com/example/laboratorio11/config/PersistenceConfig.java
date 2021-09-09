@@ -1,7 +1,3 @@
-/**
- * @author: Edson A. Terceros T.
- */
-
 package com.example.laboratorio11.config;
 
 import org.springframework.context.annotation.Configuration;

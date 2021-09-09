@@ -17,10 +17,7 @@ public class PromotionDto extends DtoBase<Promotion> {
 
     @Override
     public PromotionDto toDto(Promotion promotion, ModelMapper mapper) {
-        /*BuyDto buyDto = new BuyDto();
-        buyDto.setValue(promotion.getValue());*/
         PromotionDto promotionDto = super.toDto(promotion, mapper);
-        // buyDto.setTransacNum(Intger.valueOf(promotion.getF1)     en caso que no coincide tipo o nombre de atributo
         return promotionDto;
     }
 }
