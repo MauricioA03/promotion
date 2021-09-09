@@ -2,6 +2,7 @@ package com.example.laboratorio11.dto;
 
 
 import com.example.laboratorio11.model.Client;
+import org.modelmapper.ModelMapper;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -61,5 +62,11 @@ public class ClientDto extends DtoBase<Client> {
 
     public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
+    }
+
+    @Override
+    public ClientDto toDto(Client client, ModelMapper mapper) {
+        ClientDto clientDto = super.toDto(client, mapper);
+        return clientDto;
     }
 }
